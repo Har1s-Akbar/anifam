@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import {Episode, Genre, Genreanime, Nav, Recent, Search, Stream, Seasons} from './components'
+import {Routes, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="bg-black h-full overflow-hidden">
+      <Nav/>
+      <Routes>
+        <Route element={<Recent/>} path='/'/>
+        <Route path="/:episodeId" element={<Episode/>}/>
+        <Route path="/:episodeid/:id" element={<Stream/>}/>
+        <Route path="/animesearch" element={<Search/>}/>
+        <Route path="/genres" element={<Genre/>}/>
+        <Route path="/genres/:genre" element={<Genreanime/>}/>
+        <Route path='/seasons' element={<Seasons/>}/>
+      </Routes>
+    </section>
   );
 }
 
